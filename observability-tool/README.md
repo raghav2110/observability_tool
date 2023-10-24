@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Observability Tool
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This web application is designed to visualize data in the form of a line chart. The chart represents the number of requests over a specific time period for different endpoints. Users can interact with the chart using filters to customize the displayed data.
 
-## Available Scripts
+### Design Choices
 
-In the project directory, you can run:
+1. Special Endpoint Filtering
 
-### `npm start`
+    Special endpoint filtering is implemented by adding a special property to the data objects. During data processing, the application filters out only the entries where special is set to true.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    ```
+    // Implementation of special endpoint filtering in the code
+    const specialEndpointsData = data.filter((entry) => entry.special);
+    ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. Time Range Filtering
 
-### `npm test`
+    Time range filtering is achieved by allowing users to select a start and end date using a date picker component. When the user selects a date range, the application filters the data to only include entries that fall within the selected range. This filtering ensures that the chart displays data only for the specified time period.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    ```
+    // Implementation of time range filtering in the code
+    const filteredData = data.filter((entry) => {
+    const entryDate = new Date(entry.time);
+    return entryDate >= selectedStartDate && entryDate <= selectedEndDate;
+    });
+    ```
 
-### `npm run build`
+3. End Point Filtering
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    Endpoint filtering allows users to focus on specific endpoints by choosing an endpoint checkbox. When an endpoint is selected, the application filters the data to display only the entries corresponding to the chosen endpoint. This feature enables users to analyze individual endpoints' trends and patterns. By default all end points data are shown.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    ```
+    // Implementation of endpoint filtering in the code
+    const filteredData = data.filter((entry) => entry.endpoint === selectedEndpoint);
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Tooltip Features
 
-### `npm run eject`
+    Tooltips are implemented using the Recharts library, which provides built-in tooltip functionality. When a user hovers over a data point, a tooltip displays the exact number of requests for that specific endpoint and date. Recharts handles the tooltip rendering and positioning automatically based on the user's interaction with the chart.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    ```
+    // Implementation of tooltips using Recharts in the code
+    <Tooltip labelFormatter={formatTooltipTime}/>
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* **Date Filter** : Use the date picker to select a specific date or a date range. The chart will display data for the selected date(s).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* **Endpoint Filter** : Select an endpoint to filter data specific to that endpoint.
 
-## Learn More
+* **Special Endpoint Filter** : Use to select and show data which has a property of special set True.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Chart Interactions
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* **X-Axis** : Represents the date/time for the data points.
 
-### Code Splitting
+* **Y-Axis** : Represents the number of requests for each endpoint.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* **Hover Tooltip** : Hover over a data point to view the exact number of requests at that specific point.
 
-### Analyzing the Bundle Size
+### Libraries and Technologies Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* **React** : JavaScript library for building user interfaces.
 
-### Making a Progressive Web App
+* **Recharts** : Charting library for creating interactive charts.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* **Date-fns** : Modern JavaScript date utility library.
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Screenshot / Demo of the tool.
