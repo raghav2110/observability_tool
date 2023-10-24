@@ -10,7 +10,7 @@ This web application is designed to visualize data in the form of a line chart. 
 
     ```
     // Implementation of special endpoint filtering in the code
-    const specialEndpointsData = data.filter((entry) => entry.special);
+    filtered = filtered.filter((entry) => entry.special);
     ```
 
 2. Time Range Filtering
@@ -19,9 +19,9 @@ This web application is designed to visualize data in the form of a line chart. 
 
     ```
     // Implementation of time range filtering in the code
-    const filteredData = data.filter((entry) => {
-    const entryDate = new Date(entry.time);
-    return entryDate >= selectedStartDate && entryDate <= selectedEndDate;
+    filtered = filtered.filter((entry) => {
+        const timestamp = new Date(entry.time);
+        return timestamp >= startDate && timestamp <= endDate;
     });
     ```
 
@@ -31,7 +31,7 @@ This web application is designed to visualize data in the form of a line chart. 
 
     ```
     // Implementation of endpoint filtering in the code
-    const filteredData = data.filter((entry) => entry.endpoint === selectedEndpoint);
+    filtered = filtered.filter((entry) => selectedEndpoints.includes(entry.endpoint));
     ```
 
 4. Tooltip Features
