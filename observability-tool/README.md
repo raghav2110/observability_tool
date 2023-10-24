@@ -68,3 +68,13 @@ This web application is designed to visualize data in the form of a line chart. 
 * **Date-fns** : Modern JavaScript date utility library.
 
 ### Screenshot / Demo of the tool.
+
+* **Home Page** : ![Alt text](https://github.com/raghav2110/observability_tool/blob/main/observability-tool/Images/Initial%20Page.png)
+  
+* **Date Time Filter** : ![Alt text](https://github.com/raghav2110/observability_tool/blob/main/observability-tool/Images/Date%20Time%20Filter.png)
+
+* **Filter On Endpoint** : ![Alt text](https://github.com/raghav2110/observability_tool/blob/main/observability-tool/Images/Filter%20On%20Endpoint.png)
+
+*  **Filter On Endpoint With Tooltip** : ![Alt text](https://github.com/raghav2110/observability_tool/blob/main/observability-tool/Images/Filter%20On%20Endpoint%20With%20Tooltip.png)
+
+*  **Special Request Filter** : ![Alt text](https://github.com/raghav2110/observability_tool/blob/main/observability-tool/Images/Special%20Request%20Filter.png)
